@@ -5,13 +5,7 @@
         <h3>Cash In</h3>
     </div>
 
-        <div class="col-md-6">
-            {% for monthly in monthly_income %}
-            {% if monthly.month == '2023-06-30' %}
-        <h3>RS: {{monthly.total_income}}</h3>
-            {% endif %}
-            {% endfor %}
-    </div>
+
 </div>
  <hr>
 <div class="row">
@@ -28,11 +22,8 @@
     </div>
 
      <div class="col-md-3">
-         {% for monthly in monthly_income %}
-         {% if monthly.month == '2023-06-30' %}
          <a style="color:white" class="btn btn-success" onclick="openEntriesModal(`{{monthly.id}}`)">Add an Entry</a>
-         {% endif %}
-         {% endfor %}
+
     </div>
 </div>
 <hr>
@@ -65,33 +56,10 @@
 {% endfor   %}
 {% endfor   %}
 
-<div class="row">
-    <div class="col-md-3">
-        <b >Total Expenses</b>
-    </div>
-
-     <div class="col-md-3">
-         <b style="color:red">RS: {{sum}}</b>
-    </div>
-
-    <div class="col-md-3">
-        <b>Remaining Cash:</b>
-    </div>
-
-    <div class="col-md-3">
-         <b style="color:green">RS: {{total_income}}</b>
-    </div>
-
-
-</div>
 
  {% else %}
 
        <center>
-      <div class="row justify-content-center">
-          <div class="col-md-8">
-      <button class="btn btn-danger" onclick="show_monthly_budget()">Add Your Monthly Income</button>
-              </div>
-          </div>
+      NO DATA
           </center>
  {% endif %}

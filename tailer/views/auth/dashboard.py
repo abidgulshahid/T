@@ -12,7 +12,6 @@ class Dashboard(View):
 
     def get(self, request):
         form = ''
-        print(request.user.type)
         if request.user.is_authenticated:
             if 'get_list' in request.GET:
                 context = {}
