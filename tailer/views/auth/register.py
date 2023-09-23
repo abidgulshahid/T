@@ -28,13 +28,9 @@ class RegisterView(View):
             data = form.cleaned_data
             user = form.save(commit=False)
             user.username = data['username']
-            user.first_name = data['first_name']
-            user.last_name = data['last_name']
+            # user.first_name = data['first_name']
+            # user.last_name = data['last_name']
             user = form.save()
             user.set_password(user.password)
-            auth = authenticate(**data)
-            print()
-            if auth:
-                login(request, auth)
-                return HttpResponseRedirect(reverse_lazy('dashboard_view'))
+            user.save()
             return HttpResponseRedirect(reverse_lazy('index_view'))

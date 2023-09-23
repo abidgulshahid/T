@@ -18,3 +18,18 @@ class LoginView(View):
         form = LoginForm()
         context = {'form': form}
         return render(request, 'tailer/login.html', context=context)
+
+    def post(self,request):
+        print('reqest', 'here')
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            print()
+            data = form.cleaned_data
+            print(data)
+            auth = authenticate(**data)
+            print(auth, 'auth')
+            if auth:
+                login(request,auth)
+                return HttpResponseRedirect(reverse_lazy('dashboard_view'))
+            return HttpResponseRedirect(reverse_lazy('index_view'))
+        print(form.errors)
