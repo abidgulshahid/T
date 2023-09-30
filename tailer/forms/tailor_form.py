@@ -14,7 +14,6 @@ class TailorForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = "form-control"
             # self.fields[field].required = True
-        self.fields['user'].required = False
         self.fields['order_take'].widget = forms.TextInput(attrs={'type': 'date'})
         self.fields['order_take'].widget.attrs['class'] = "form-control"
 
