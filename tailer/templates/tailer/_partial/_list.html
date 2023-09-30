@@ -1,60 +1,19 @@
 
+
+<div class="row">
+    <div class="col-md-8">
+
+    </div>
+
+
+     <div class="col-md-4" >
+         <a style="color:white" class="btn btn-success" onclick="openEntriesModal()">Add an Entry</a>
+    </div>
+
+</div>
+<hr>
  {% if monthly_income %}
-<div class="row">
-    <div class="col-md-6">
-        <h3>Cash In</h3>
-    </div>
 
-
-</div>
- <hr>
-<div class="row">
-    <div class="col-md-3">
-            <p>Name</p>
-    </div>
-
-     <div class="col-md-3">
-        Category
-    </div>
-
-     <div class="col-md-3">
-         Amount
-    </div>
-
-     <div class="col-md-3">
-         <a style="color:white" class="btn btn-success" onclick="openEntriesModal(`{{monthly.id}}`)">Add an Entry</a>
-
-    </div>
-</div>
-<hr>
-
-{% for data in response  %}
- {% for monthly in monthly_income %}
-<div class="row" style="   overflow-x: hidden;
-                overflow-y: auto">
-    <div class="col-md-3">
-            <p>{{data.name}}</p>
-    </div>
-
-     <div class="col-md-3">
-        <span class="category">{{data.category}}</span>
-    </div>
-
-     <div class="col-md-2">
-         {{data.amount}}
-    </div>
-
-        <div class="col-md-2">
-         <a style="color:white" class="btn btn-warning" onclick="show_edit_entry_modal({{data.id}})">Edit</a>
-    </div>
-
-       <div class="col-md-2">
-         <a style="color:white" class="btn btn-danger" onclick="delete_entry({{data.id}})">Delete</a>
-    </div>
-</div>
-<hr>
-{% endfor   %}
-{% endfor   %}
 
 
  {% else %}
