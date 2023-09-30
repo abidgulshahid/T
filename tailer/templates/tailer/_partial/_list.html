@@ -17,8 +17,10 @@
 <div class="row">
     <div class="col-md-2">Name</div>
     <div class="col-md-2">Phone No</div>
-    <div class="col-md-3">Order Take</div>
-    <div class="col-md-3">Order Deadline</div>
+    <div class="col-md-2">Order Take</div>
+    <div class="col-md-2">Order Deadline</div>
+    <div class="col-md-2">Edit</div>
+    <div class="col-md-2">Delete</div>
 
 </div>
 {% for tailer in get_tailers %}
@@ -27,14 +29,20 @@
     <div class="col-md-2">{{tailer.name}}</div>
     <div class="col-md-2">{{tailer.phone_number}}</div>
     <div class="col-md-2">{{tailer.order_take}}</div>
-    <div class="col-md-3">{{tailer.order_deadline}}</div>
+    <div class="col-md-2">{{tailer.order_deadline}}</div>
+    <div class="col-md-2" style="margin-bottom:5px;">
+        <a style="color:white" class="btn btn-warning" onclick="edit_event_list({{tailer.id}})">Edit</a>
+    </div>
+
+    <div class="col-md-2">
+        <a style="color:white" class="btn btn-danger" onclick="delete_entry({{tailer.id}})">Delete</a>
+    </div>
 
 </div>
 
 {% endfor %}
 
  {% else %}
-
        <center>
       NO DATA
           </center>
