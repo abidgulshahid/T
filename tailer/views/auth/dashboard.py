@@ -5,27 +5,36 @@ from django.views import View
 from django.urls import reverse
 from django.shortcuts import redirect
 
+from tailer.forms.tailor_form import TailorForm
+from tailer.models import Tailor
+
 
 class Dashboard(View):
     def dispatch(self, request, *args, **kwargs):
         return super(Dashboard, self).dispatch(request, *args, **kwargs)
 
     def get(self, request):
-        form = ''
+        form = TailorForm()
         if request.user.is_authenticated:
             if 'get_list' in request.GET:
-                context = {}
+                get_tailers = Tailor.objects.filter(user_id=request.user.id)
+                context = {'get_tailers': get_tailers}
                 string = render(request, 'tailer/_partial/_list.html', context=context)
                 return HttpResponse(string)
-            return render(request, 'tailer/dashboard.html', context={'request':request, 'form':form})
+            return render(request, 'tailer/dashboard.html', context={'request':request, 'entry_form':form})
         return HttpResponseRedirect(reverse_lazy('index_view'))
 
     def post(self, request):
         print(request.POST)
-        # form = PaymentForm(data=request.POST)
-        # if 'create_entry' in request.POST:
-        #     if form.is_valid():
-        #         data = form.save(commit=False)
-        #         data.user_id = request.user.id
-        #         data.save()
-        #         return HttpResponse("success")
+
+        if 'create_entry' in request.POST:
+            form = TailorForm(data=request.POST)
+            print(request.user.id)
+            if form.is_valid():
+                print('hello')
+                form = form.save(commit=False)
+                print(form, 'form')
+                form.save()
+                return HttpResponse('success')
+            print(form.errors)
+            return render(request, 'tailer/_partial/_create.html', context={'request': request, 'entry_form': form})

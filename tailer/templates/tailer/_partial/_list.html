@@ -12,9 +12,26 @@
 
 </div>
 <hr>
- {% if monthly_income %}
+ {% if get_tailers %}
 
+<div class="row">
+    <div class="col-md-2">Name</div>
+    <div class="col-md-2">Phone No</div>
+    <div class="col-md-3">Order Take</div>
+    <div class="col-md-3">Order Deadline</div>
 
+</div>
+{% for tailer in get_tailers %}
+
+<div class="row">
+    <div class="col-md-2">{{tailer.name}}</div>
+    <div class="col-md-2">{{tailer.phone_number}}</div>
+    <div class="col-md-2">{{tailer.order_take}}</div>
+    <div class="col-md-3">{{tailer.order_deadline}}</div>
+
+</div>
+
+{% endfor %}
 
  {% else %}
 

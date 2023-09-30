@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 
 
 class Tailor(models.Model):
-    user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=500, null=True, blank=True)
     height = models.CharField(max_length=500, null=True, blank=True)
     phone_number = models.CharField(max_length=500, null=True, blank=True)
@@ -16,6 +16,10 @@ class Tailor(models.Model):
     type = models.CharField(max_length=500, null=True, blank=True)
     upper_shirt = models.CharField(max_length=500, null=True, blank=True)
     trouser = models.CharField(max_length=500, null=True, blank=True)
+    order_take =  models.DateField(null=True, blank=True)
+    order_deadline =  models.DateField(null=True, blank=True)
 
+    def __str__(self):
+        return str(self.name)
 
 
