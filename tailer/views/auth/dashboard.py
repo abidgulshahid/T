@@ -25,9 +25,14 @@ class Dashboard(View):
                 get_obj = request.GET.get('obj')
                 obj = Tailor.objects.filter(id=get_obj, user_id=request.user.id).first()
                 edit_form  =TailorForm(instance=obj)
-                context =  {'entry_form': edit_form}
+                context =  {'entry_form': edit_form, 'obj':obj}
                 string = render(request, 'tailer/_partial/_edit.html', context=context)
                 return HttpResponse(string)
+            if 'delete_id' in request.GET:
+                delete_id = request.GET.get('delete_id')
+                obj = Tailor.objects.filter(id=delete_id, user_id=request.user.id).first()
+                obj.delete()
+                return HttpResponse('success')
             return render(request, 'tailer/dashboard.html', context={'request':request, 'entry_form':form})
         return HttpResponseRedirect(reverse_lazy('index_view'))
 
@@ -47,8 +52,12 @@ class Dashboard(View):
 
         if 'edit_entry' in request.POST:
             edit_entry = request.POST.get('edit_entry')
-            edit_form = TailorForm(instance=Tailor.objects.filter(user_id=request.user.id, id=edit_entry))
+            edit_form = TailorForm(instance=Tailor.objects.filter(user_id=request.user.id, id=edit_entry).first(), data=request.POST)
             if edit_form.is_valid():
-                edit_form.save()
-                return HttpResponse("success")
+                obj = edit_form.save(commit=False)
+                obj.user_id = request.user.id
+                print('hello world')
+                obj.save()
+                return HttpResponse('success')
+            print(edit_form.errors, 'error')
             return render(request, 'tailer/_partial/_edit.html', context={'request': request, 'entry_form': edit_form})

@@ -111,9 +111,10 @@
         }
 
 
-        function delete_entry(id){
+
+function delete_entry(id){
             $.ajax({
-                type: 'POST',
+                type: 'GET',
                 url: '',
                 data: {'delete_id': id,
                         csrfmiddlewaretoken: '{{ csrf_token }}',
@@ -150,6 +151,33 @@
     });
 
 }
+
+function submit_edit(){
+    $('.edit-event-content-form').on('submit',function(e){
+        e.preventDefault();
+       $.ajax({
+                type: 'POST',
+                url: '',
+                data: $(".edit-event-content-form").serialize() ,
+                success: function (response) {
+                    if(response=='success'){
+                        console.log("HELLOO",)
+                        load_list()
+                        $('#edit-model-content').modal('hide')
+                    }else{
+                    console.log(" NOT HELLOO",)
+                        $('#edit-model-content-body').html(response)
+
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error')
+                }
+            });
+
+    })
+}
+
 
 </script>
 {% endblock scripts %}

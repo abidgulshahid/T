@@ -14,12 +14,12 @@ padding-bottom: 35px;
 }
 </style>
 <div class="modal-header">
-    <h5 class="modal-title">Add an Entry</h5>
+    <h5 class="modal-title">Edit an Entry</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
     </button>
 
 </div>
-<form class="form-horizontal content-form form-custom" method="post" role="form" action="">
+<form class="form-horizontal edit-event-content-form form-custom" method="post" role="form" action="">
     {% csrf_token %}
     <div class="modal-body">
         <div class="col-md-12 col-lg-12 pr-0 pl-0 internal-div">
@@ -130,7 +130,7 @@ padding-bottom: 35px;
             </div>
 
             <div class="clearfix" style="clear:both;"></div>
-            <input type="text" name="edit_entry" value="" >
+            <input type="text" name="edit_entry" value="{{obj.id}}" hidden>
         <div class="clearfix" style="clear:both;"></div>
 
  </div>
@@ -138,7 +138,7 @@ padding-bottom: 35px;
     </div>
     <div class="row">
             <div class="col-md-12 p-4 pl-5 pr-5">
-                <a style="color:white"  class="btn btn-danger wb-white-font-14 save-btn" onclick="edit_entries({{request.user.id}})">Add an Entry</a>
+                <button style="color:white"  class="btn btn-danger wb-white-font-14 save-btn" onclick="submit_edit()">Add an Entry</button>
             <a type="button" data-dismiss="modal" class="ml-3 ">Cancel</a>
             </div>
         </div>
