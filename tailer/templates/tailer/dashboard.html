@@ -8,7 +8,20 @@
                     <div class="col-lg-12">
                         <div class="card">
   <div class="card-body">
-      <div  class="list-item"></div>
+      <div class="row">
+          <div class="col-md-10">
+                                <input id="search" type="text" class="form-control " placeholder="Search with Name/Phone Number" aria-label="" aria-describedby="basic-addon2">
+
+          </div>
+          <div class="col-md-2">
+                       <a style="color:white" class="btn btn-success" onclick="openEntriesModal()">Add an Entry</a>
+
+          </div>
+
+
+      </div>
+       <div  class="list-item"></div>
+
 
   </div>
 </div>
@@ -39,11 +52,12 @@
 {% endblock %}
 {% block scripts %}
 <script>
-    function load_list(){
+    function load_list(search=''){
         $.ajax({
             type: 'GET',
             url: '',
             data: {'get_list':true,
+                    'search':search
                     },
             success: function (response) {
                 $('.list-item').html(response);
@@ -55,6 +69,9 @@
     }
     load_list()
 
+ $('#search').on('input',function(){
+        load_list(search=$('#search').val())
+    })
     function openEntriesModal()
     {
  $('#model-content').modal('show');
