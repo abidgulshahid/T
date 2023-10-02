@@ -1,35 +1,24 @@
 
-
-<div class="row">
-    <div class="col-md-8">
-
-    </div>
-
-
-     <div class="col-md-4" >
-         <a style="color:white" class="btn btn-success" onclick="openEntriesModal()">Add an Entry</a>
-    </div>
-
-</div>
 <hr>
  {% if get_tailers %}
 
 <div class="row">
-    <div class="col-md-2">Name</div>
-    <div class="col-md-2">Phone No</div>
-    <div class="col-md-2">Order Take</div>
-    <div class="col-md-2">Order Deadline</div>
-    <div class="col-md-2">Edit</div>
-    <div class="col-md-2">Delete</div>
+    <div class="col-md-2"><h4>Name</h4></div>
+    <div class="col-md-2"><h4>Phone No</h4></div>
+    <div class="col-md-2"><h4>Order Take </h4></div>
+    <div class="col-md-2"><h4>Order Deadline</h4></div>
+    <div class="col-md-2"><h4>Edit</h4></div>
+    <div class="col-md-2"><h4>Delete</h4></div>
 
 </div>
+<hr>
 {% for tailer in get_tailers %}
 
 <div class="row">
-    <div class="col-md-2">{{tailer.name}}</div>
-    <div class="col-md-2">{{tailer.phone_number}}</div>
-    <div class="col-md-2">{{tailer.order_take}}</div>
-    <div class="col-md-2">{{tailer.order_deadline}}</div>
+    <div class="col-md-2"><p>{{tailer.name}}</p></div>
+    <div class="col-md-2"><p>{{tailer.phone_number}}</p></div>
+    <div class="col-md-2"><p>{{tailer.order_take}}</p></div>
+    <div class="col-md-2"><p>{{tailer.order_deadline}}</p></div>
     <div class="col-md-2" style="margin-bottom:5px;">
         <a style="color:white" class="btn btn-warning" onclick="edit_event_list({{tailer.id}})">Edit</a>
     </div>
@@ -38,7 +27,9 @@
         <a style="color:white" class="btn btn-danger" onclick="delete_entry({{tailer.id}})">Delete</a>
     </div>
 
+
 </div>
+<hr>
 
 {% endfor %}
 
