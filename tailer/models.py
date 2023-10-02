@@ -20,6 +20,19 @@ class Tailor(models.Model):
     order_deadline =  models.DateField(null=True, blank=True)
     father_name = models.CharField(max_length=255, null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
+    length = models.CharField(max_length=255, null=True, blank=True)
+    cuff = models.CharField(max_length=255, null=True, blank=True)
+    waist = models.CharField(max_length=255, null=True, blank=True)
+    low_waist = models.CharField(max_length=255, null=True, blank=True)
+    hip = models.CharField(max_length=255, null=True, blank=True)
+    muscle = models.CharField(max_length=255, null=True, blank=True)
+    arm_hole = models.CharField(max_length=255, null=True, blank=True)
+    collar = models.CharField(max_length=255, null=True, blank=True)
+    pocket = models.CharField(max_length=255, null=True, blank=True)
+    pancha = models.CharField(max_length=255, null=True, blank=True)
+
+
+
 
     def __str__(self):
         return str(self.name)
