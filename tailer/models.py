@@ -18,6 +18,8 @@ class Tailor(models.Model):
     trouser = models.CharField(max_length=500, null=True, blank=True)
     order_take =  models.DateField(null=True, blank=True)
     order_deadline =  models.DateField(null=True, blank=True)
+    father_name = models.CharField(max_length=255, null=True, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
 
     def __str__(self):
         return str(self.name)
