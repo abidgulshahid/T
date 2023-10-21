@@ -19,139 +19,136 @@ padding-bottom: 35px;
     </button>
 
 </div>
-<form class="form-horizontal content-form form-custom" method="post" role="form" action="">
+<form class="content-form form-custom" method="post" role="form" action="">
     {% csrf_token %}
     <div class="modal-body">
-        <div class="col-md-12 col-lg-12 pr-0 pl-0 internal-div">
 
-            <div class="col-md-12">
-                <div class="wb-event-box-h-14">
-                    <div class="indicator_opr_new float-right" style="display:inline;" >
-
-                    </div>
-                    <div class="indicator_processing_new text-center float-right" hidden>
-                        <div class="spinner-border text-gray mt-1" role="status" style="width: 1rem !important;height: 1rem !important;">
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                    </div>
-                    <div class="clearfix" style="clear:both;"></div>
-                </div>
-            </div>
-            <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+        <div class="row">
+            <div class="col-md-4">
+                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Name</label>
                     {{entry_form.name}}
 
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
-                 <div class="col-md-12" style="margin:auto">
+                <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Phone Number</label>
+                    {{entry_form.phone_number}}
+
+                </div>
+            </div>
+
+              <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Father Name</label>
                     {{entry_form.father_name}}
 
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
-                <div class="col-md-12" style="margin:auto">
+
+
+
+        </div>
+
+        <div class="row">
+                <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Address</label>
                     {{entry_form.address}}
 
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
+              <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Length</label>
+                    {{entry_form.length}}
 
-              <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Phone Number</label>
-                    {{entry_form.phone_number}}
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
-             <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Height</label>
-                    {{entry_form.height}}
+
+                   <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Waist</label>
+                    {{entry_form.waist}}
+
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
-                  <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Chest</label>
-                    {{entry_form.chest}}
+        </div>
+
+
+               <div class="row">
+                <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Low Waist</label>
+                    {{entry_form.low_waist}}
+
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
-              <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Right Shoulder</label>
-                    {{entry_form.right_shoulder}}
+              <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Hip</label>
+                    {{entry_form.hip}}
+
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
-             <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Left Shoulder</label>
-                    {{entry_form.left_shoulder}}
+
+                   <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Muscle</label>
+                    {{entry_form.muscle}}
+
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
-            <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Type</label>
-                    {{entry_form.type}}
+        </div>
+
+
+
+                    <div class="row">
+                <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">ARM Hole</label>
+                    {{entry_form.arm_hole}}
+
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
+              <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Collar</label>
+                    {{entry_form.collar}}
 
-
-            <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Upper Shirt</label>
-                    {{entry_form.upper_shirt}}
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
-                  <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Trouser</label>
-                    {{entry_form.trouser}}
+
+                   <div class="col-md-2">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Pocket</label>
+                    {{entry_form.pocket}}
+
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
 
-             <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Order Take</label>
-                    {{entry_form.order_take}}
+
+                   <div class="col-md-2">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Pancha</label>
+                    {{entry_form.pancha}}
+
                 </div>
-                <div class="clearfix" style="clear:both;"></div>
             </div>
+        <input name="create_entry" hidden>
+        </div>
 
-             <div class="col-md-12" style="margin:auto">
-                <div class="form-group text-left label-floating is-empty {% if form.promo_code.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Order Deadline</label>
-                    {{entry_form.order_deadline}}
-                </div>
-                <div class="clearfix" style="clear:both;"></div>
-            </div>
-
-            <div class="clearfix" style="clear:both;"></div>
-            <input type="text" name="create_entry" value="{{request.user.id}}" hidden>
-        <div class="clearfix" style="clear:both;"></div>
-
- </div>
 
     </div>
     <div class="row">
