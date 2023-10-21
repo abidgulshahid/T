@@ -9,6 +9,8 @@
                     <div class="col-lg-6">
                         <div class="card">
   <div class="card-body">
+            <h3>Login Here</h3>
+
            <form class="form-horizontal form-custom" method="post" role="form" action="">
                {% csrf_token %}
 
@@ -30,7 +32,7 @@
   <button type="submit" class="btn btn-primary mt-1">Submit</button>
                         </form>
 
-      <p>If you don't have an account, click here to  <a href="#">Register</a> </p>
+      <p>If you don't have an account, click here to  <a href="{% url 'signup_view' %}">Register</a> </p>
   </div>
 </div>
 
