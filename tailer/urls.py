@@ -8,4 +8,5 @@ urlpatterns = [
     path('register/', register.RegisterView.as_view(), name='signup_view'),
     path('dasboard/',dashboard.Dashboard.as_view(), name='dashboard_view'),
     path('logout/',dashboard.LogoutView.as_view(), name='logout_view'),
+    path('view/<id>/', dashboard.DataView.as_view(), name='data_view')
 ]
