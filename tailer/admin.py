@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Tailor
+from .models import Customer
 
 # Register your models here.
 
-admin.site.register(Tailor)
+admin.site.register(Customer)

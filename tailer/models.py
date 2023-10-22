@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Tailor(models.Model):
+class Customer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=500, null=True, blank=True)
     height = models.CharField(max_length=500, null=True, blank=True)

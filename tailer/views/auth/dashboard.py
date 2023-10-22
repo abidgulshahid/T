@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django.contrib.auth import logout
 from django.db.models import Q
 from tailer.forms.tailor_form import TailorForm
-from tailer.models import Tailor
+from tailer.models import Customer
 
 
 class Dashboard(View):
@@ -18,21 +18,21 @@ class Dashboard(View):
         form = TailorForm()
         if 'get_list' in request.GET:
             search = request.GET.get('search')
-            get_tailers = Tailor.objects.filter(user_id=request.user.id)
+            get_tailers = Customer.objects.filter(user_id=request.user.id)
             if search: get_tailers =  get_tailers.filter(Q(name__icontains=search) | Q(phone_number__icontains=search))
             context = {'get_tailers': get_tailers}
             string = render(request, 'tailer/_partial/_list.html', context=context)
             return HttpResponse(string)
         if 'obj' in request.GET:
             get_obj = request.GET.get('obj')
-            obj = Tailor.objects.filter(id=get_obj, user_id=request.user.id).first()
+            obj = Customer.objects.filter(id=get_obj, user_id=request.user.id).first()
             edit_form = TailorForm(instance=obj)
             context = {'entry_form': edit_form, 'obj': obj}
             string = render(request, 'tailer/_partial/_edit.html', context=context)
             return HttpResponse(string)
         if 'delete_id' in request.GET:
             delete_id = request.GET.get('delete_id')
-            obj = Tailor.objects.filter(id=delete_id, user_id=request.user.id).first()
+            obj = Customer.objects.filter(id=delete_id, user_id=request.user.id).first()
             obj.delete()
             return HttpResponse('success')
         return render(request, 'tailer/dashboard.html', context={'request': request, 'entry_form': form})
@@ -53,7 +53,7 @@ class Dashboard(View):
 
         if 'edit_entry' in request.POST:
             edit_entry = request.POST.get('edit_entry')
-            edit_form = TailorForm(instance=Tailor.objects.filter(user_id=request.user.id, id=edit_entry).first(),
+            edit_form = TailorForm(instance=Customer.objects.filter(user_id=request.user.id, id=edit_entry).first(),
                                    data=request.POST)
             if edit_form.is_valid():
                 obj = edit_form.save(commit=False)
