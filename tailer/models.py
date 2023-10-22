@@ -16,8 +16,8 @@ class Tailor(models.Model):
     type = models.CharField(max_length=500, null=True, blank=True)
     upper_shirt = models.CharField(max_length=500, null=True, blank=True)
     trouser = models.CharField(max_length=500, null=True, blank=True)
-    order_take =  models.DateField(null=True, blank=True)
-    order_deadline =  models.DateField(null=True, blank=True)
+    order_take = models.DateField(null=True, blank=True)
+    order_deadline = models.DateField(null=True, blank=True)
     father_name = models.CharField(max_length=255, null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
     length = models.CharField(max_length=255, null=True, blank=True)
@@ -30,11 +30,7 @@ class Tailor(models.Model):
     collar = models.CharField(max_length=255, null=True, blank=True)
     pocket = models.CharField(max_length=255, null=True, blank=True)
     pancha = models.CharField(max_length=255, null=True, blank=True)
-
-
-
+    extra_info = models.CharField(max_length=500, null=True, blank=True)
 
     def __str__(self):
         return str(self.name)
-
-
