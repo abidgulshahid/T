@@ -149,6 +149,18 @@ padding-bottom: 35px;
             <input type="text" name="edit_entry" value="{{obj.id}}" hidden>
         </div>
 
+                <div class="row">
+            <div class="col-md-12">
+
+                             <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Additional Information</label>
+                    {{entry_form.extra_info}}
+
+                </div>
+
+            </div>
+        </div>
+
 
     </div>
     <div class="row">
