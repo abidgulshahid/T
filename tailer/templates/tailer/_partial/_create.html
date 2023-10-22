@@ -163,6 +163,27 @@ padding-bottom: 35px;
 
             </div>
         </div>
+           <div class="row">
+            <div class="col-md-6">
+
+                             <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Payment</label>
+                    {{entry_form.payment}}
+
+                </div>
+
+            </div>
+
+                <div class="col-md-6">
+
+                             <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Recieved</label>
+                    {{entry_form.recieved}}
+
+                </div>
+
+            </div>
+        </div>
 
 
     </div>
