@@ -31,6 +31,13 @@ class Customer(models.Model):
     pocket = models.CharField(max_length=255, null=True, blank=True)
     pancha = models.CharField(max_length=255, null=True, blank=True)
     extra_info = models.CharField(max_length=500, null=True, blank=True)
+    payment = models.IntegerField(null=True)
+    status = [
+        ("YES", "YES"),
+        ("NO", "NO")
+    ]
+    recieved = models.CharField(max_length=255, null=True, blank=True, choices=status)
+
 
     def __str__(self):
         return str(self.name)
