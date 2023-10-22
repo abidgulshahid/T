@@ -20,4 +20,6 @@ class TailorForm(forms.ModelForm):
         self.fields['order_deadline'].widget = forms.TextInput(attrs={'type': 'date'})
         self.fields['order_deadline'].widget.attrs['class'] = "form-control"
 
+        self.fields['name'].required = True
+
     # def clean_phone_number(self):
