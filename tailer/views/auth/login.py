@@ -4,11 +4,13 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 from django.contrib.auth import authenticate, login
-
+from django.views.decorators.csrf import csrf_exempt
 from tailer.forms.auth import LoginForm
-
+from django.utils.decorators import method_decorator
 
 class LoginView(View):
+    @method_decorator(csrf_exempt)
+
     def dispatch(self, request, *args, **kwargs):
         return super(LoginView, self).dispatch(request, *args, **kwargs)
 

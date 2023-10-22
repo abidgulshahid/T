@@ -18,11 +18,10 @@
                                     {{form.username}}
                                     </div>
 
-                            {% if username %}
-                            <div class="form-group">
-                                <span class="text-danger">{{username}}</span>
-                            </div>
-                            {% endif %}
+                                    {% if form.username.errors %}
+                                   <span class="text-danger"> {{ form.username.errors }} </span>
+                             {% endif %}
+
 
 
                                     <div class="form-group">
