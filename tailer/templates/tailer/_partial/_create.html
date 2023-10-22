@@ -28,6 +28,9 @@ padding-bottom: 35px;
                  <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Name</label>
                     {{entry_form.name}}
+                       {% if entry_form.name.errors %}
+                                   <span class="text-danger"> {{ entry_form.name.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
