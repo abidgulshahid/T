@@ -65,9 +65,8 @@ class Dashboard(View):
             return render(request, 'tailer/_partial/_edit.html', context={'request': request, 'entry_form': edit_form})
 
 
+
 '''This View will logout the user'''
-
-
 class LogoutView(View):
     def dispatch(self, request, *args, **kwargs):
         return super(LogoutView, self).dispatch(request, *args, **kwargs)
