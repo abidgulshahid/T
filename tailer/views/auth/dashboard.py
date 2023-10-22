@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import View
 from django.urls import reverse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import logout
 from django.db.models import Q
 from tailer.forms.tailor_form import TailorForm
@@ -64,6 +64,15 @@ class Dashboard(View):
             print(edit_form.errors, 'error')
             return render(request, 'tailer/_partial/_edit.html', context={'request': request, 'entry_form': edit_form})
 
+
+class DataView(View):
+    def dispatch(self, request, *args, **kwargs):
+        return super(DataView, self).dispatch(request, *args, **kwargs)
+
+    def get(self, request,id):
+        get_data = get_object_or_404(Customer, user=request.user, id=id)
+        print(get_data, 'get data')
+        return render(request, 'tailer/view_detail.html', context={'request': request, 'get_data':get_data})
 
 
 '''This View will logout the user'''
