@@ -9,7 +9,7 @@ class Customer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=500, null=True, blank=True)
     height = models.CharField(max_length=500, null=True, blank=True)
-    phone_number = models.IntegerField(max_length=500, null=True, blank=True)
+    phone_number = models.CharField(max_length=500, null=True, blank=True)
     chest = models.CharField(max_length=500, null=True, blank=True)
     right_shoulder = models.CharField(max_length=500, null=True, blank=True)
     left_shoulder = models.CharField(max_length=500, null=True, blank=True)

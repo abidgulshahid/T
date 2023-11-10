@@ -37,8 +37,12 @@ padding-bottom: 35px;
 
                 <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Phone Number</label>
+                    <label class="wb-event-box-b-12 ">Phone Number  <span class="text-danger">*</span</label>
                     {{entry_form.phone_number}}
+
+                      {% if entry_form.phone_number.errors %}
+                                   <span class="text-danger"> {{ entry_form.phone_number.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
@@ -69,6 +73,10 @@ padding-bottom: 35px;
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Length</label>
                     {{entry_form.length}}
+
+                       {% if entry_form.length.errors %}
+                                   <span class="text-danger"> {{ entry_form.length.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
