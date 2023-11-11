@@ -31,7 +31,7 @@ class Customer(models.Model):
     pocket = models.CharField(max_length=255, null=True, blank=True)
     pancha = models.CharField(max_length=255, null=True, blank=True)
     extra_info = models.CharField(max_length=500, null=True, blank=True)
-    payment = models.IntegerField(null=True)
+    payment = models.CharField(max_length=500, null=True, blank=True)
     status = [
         ("YES", "YES"),
         ("NO", "NO")
