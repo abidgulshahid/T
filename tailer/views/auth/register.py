@@ -8,6 +8,7 @@ from django.views import View
 from django.contrib.auth import authenticate, login
 
 from tailer.forms.auth import Signup
+from tailer.models import Users
 
 
 class RegisterView(View):
@@ -28,6 +29,9 @@ class RegisterView(View):
             data = form.cleaned_data
             user = form.save(commit=False)
             user.username = data['username']
+            user.email = data['username']
+            if Users.objects.filter(email__iexact=data['username']).exists():
+                print('Already Exists')
             # user.first_name = data['first_name']
             # user.last_name = data['last_name']
             user = form.save()
