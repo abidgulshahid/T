@@ -87,6 +87,12 @@ padding-bottom: 35px;
                     <label class="wb-event-box-b-12 ">Waist</label>
                     {{entry_form.waist}}
 
+
+                       {% if entry_form.waist.errors %}
+                                   <span class="text-danger"> {{ entry_form.waist.errors }} </span>
+                             {% endif %}
+
+
                 </div>
             </div>
 
@@ -99,6 +105,12 @@ padding-bottom: 35px;
                     <label class="wb-event-box-b-12 ">Low Waist</label>
                     {{entry_form.low_waist}}
 
+
+                       {% if entry_form.low_waist.errors %}
+                                   <span class="text-danger"> {{ entry_form.low_waist.errors }} </span>
+                             {% endif %}
+
+
                 </div>
             </div>
 
@@ -106,6 +118,10 @@ padding-bottom: 35px;
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Hip</label>
                     {{entry_form.hip}}
+
+                               {% if entry_form.hip.errors %}
+                                   <span class="text-danger"> {{ entry_form.hip.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
@@ -115,6 +131,11 @@ padding-bottom: 35px;
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Muscle</label>
                     {{entry_form.muscle}}
+
+                        {% if entry_form.muscle.errors %}
+                                   <span class="text-danger"> {{ entry_form.muscle.errors }} </span>
+                             {% endif %}
+
 
                 </div>
             </div>
@@ -129,6 +150,10 @@ padding-bottom: 35px;
                     <label class="wb-event-box-b-12 ">ARM Hole</label>
                     {{entry_form.arm_hole}}
 
+                               {% if entry_form.arm_hole.errors %}
+                                   <span class="text-danger"> {{ entry_form.arm_hole.errors }} </span>
+                             {% endif %}
+
                 </div>
             </div>
 
@@ -136,6 +161,11 @@ padding-bottom: 35px;
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Collar</label>
                     {{entry_form.collar}}
+
+
+                               {% if entry_form.collar.errors %}
+                                   <span class="text-danger"> {{ entry_form.collar.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
@@ -146,6 +176,11 @@ padding-bottom: 35px;
                     <label class="wb-event-box-b-12 ">Pocket</label>
                     {{entry_form.pocket}}
 
+                        {% if entry_form.pocket.errors %}
+                                   <span class="text-danger"> {{ entry_form.pocket.errors }} </span>
+                             {% endif %}
+
+
                 </div>
             </div>
 
@@ -154,6 +189,10 @@ padding-bottom: 35px;
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Pancha</label>
                     {{entry_form.pancha}}
+
+                                         {% if entry_form.pancha.errors %}
+                                   <span class="text-danger"> {{ entry_form.pancha.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
@@ -167,6 +206,7 @@ padding-bottom: 35px;
                     <label class="wb-event-box-b-12 ">Additional Information</label>
                     {{entry_form.extra_info}}
 
+
                 </div>
 
             </div>
@@ -177,6 +217,10 @@ padding-bottom: 35px;
                              <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Payment</label>
                     {{entry_form.payment}}
+
+                                        {% if entry_form.payment.errors %}
+                                   <span class="text-danger"> {{ entry_form.payment.errors }} </span>
+                             {% endif %}
 
                 </div>
 
