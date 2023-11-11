@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User
 from django import forms
 
+from tailer.models import Users
+
+
 class LoginForm(forms.Form):
     username = forms.EmailField(max_length = 200, widget=forms.EmailInput())
     password = forms.CharField(widget=forms.PasswordInput(), max_length=255)
@@ -19,7 +22,7 @@ class Signup(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(), max_length=255)
 
     class Meta:
-        model = User
+        model = Users
         fields = ['username', 'password']
 
     def __init__(self, *args, **kwargs):
