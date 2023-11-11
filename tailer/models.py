@@ -1,12 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, BaseUserManager
+from tailer.manager import UserManager
 
 
 # Create your models here.
 
 
+class Users(AbstractUser):
+    email = models.CharField(max_length=100, unique=True)
+    is_tailer = models.BooleanField(default=False)
+    is_user = models.BooleanField(default=False)
+    objects = UserManager()
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
+    def __str__(self):
+        return self.email
+
+
 class Customer(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=500, null=True, blank=True)
     height = models.CharField(max_length=500, null=True, blank=True)
     phone_number = models.CharField(max_length=500, null=True, blank=True)
@@ -37,7 +51,6 @@ class Customer(models.Model):
         ("NO", "NO")
     ]
     recieved = models.CharField(max_length=255, null=True, blank=True, choices=status)
-
 
     def __str__(self):
         return str(self.name)
