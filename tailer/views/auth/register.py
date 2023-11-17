@@ -36,7 +36,12 @@ class RegisterView(View):
             # user.last_name = data['last_name']
             user = form.save()
             user.set_password(user.password)
-            user.is_active = False
+            if data['type'] == 'User':
+                user.is_user = True
+                user.is_active = True
+            else:
+                user.is_active = False
+                user.is_staff = False
             user.save()
             return HttpResponseRedirect(reverse_lazy('index_view'))
         else:
