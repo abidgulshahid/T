@@ -20,7 +20,8 @@ class Users(AbstractUser):
 
 
 class Customer(models.Model):
-    user = models.ForeignKey(Users, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, null=True, blank=True, related_name='user')
+    tailer = models.ForeignKey(Users, on_delete=models.CASCADE, null=True, blank=True, related_name='tailer')
     name = models.CharField(max_length=500, null=True, blank=True)
     height = models.CharField(max_length=500, null=True, blank=True)
     phone_number = models.CharField(max_length=500, null=True, blank=True)
@@ -63,4 +64,6 @@ class RequestAccess(models.Model):
     requested_by = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='request_by_usr', null=True, blank=True)
     record_number = models.IntegerField(max_length=255)
     requested_to  = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='request_to_user', null=True, blank=True)
+    is_approved = models.BooleanField(default=False)
+
 
