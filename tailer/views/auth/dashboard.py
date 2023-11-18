@@ -37,17 +37,10 @@ class Dashboard(View):
             return HttpResponse('success')
         if 'request_id' in request.GET:
             get_obj = Customer.objects.filter(id=request.GET.get('request_id')).first()
-            print(get_obj.request_access)
             if get_obj:
                 get_obj.request_access = True
                 get_obj.save()
-                search = request.GET.get('search')
-                get_tailers = Customer.objects.filter(user_id=request.user.id)
-                if search: get_tailers = get_tailers.filter(
-                    Q(name__icontains=search) | Q(phone_number__icontains=search))
-                context = {'get_tailers': get_tailers}
-                string = render(request, 'tailer/_partial/_list.html', context=context)
-                return HttpResponse(string)
+                return HttpResponse('success')
 
         return render(request, 'tailer/dashboard.html', context={'request': request, 'entry_form': form})
 
