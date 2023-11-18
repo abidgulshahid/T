@@ -195,6 +195,27 @@ function submit_edit(){
     })
 }
 
+    function request_sent(id){
+     $.ajax({
+                type: 'GET',
+                url: '',
+                data: {
+                    'request_id': id,
+                     csrfmiddlewaretoken: '{{ csrf_token }}',
+                } ,
+                success: function (response) {
+                    if(response){
+                    console.log('sent')
+                       load_list()
+                    }else{
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error')
+                }
+            });
+    }
+
 
 </script>
 {% endblock scripts %}
