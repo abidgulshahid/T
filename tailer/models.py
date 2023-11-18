@@ -52,6 +52,7 @@ class Customer(models.Model):
     ]
     recieved = models.CharField(max_length=255, null=True, blank=True, choices=status)
     request_access = models.BooleanField(default=False)
+    is_approved = models.BooleanField(default=False)
 
 
     def __str__(self):
