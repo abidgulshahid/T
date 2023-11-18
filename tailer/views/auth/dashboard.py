@@ -53,7 +53,6 @@ class Dashboard(View):
         if 'approve' in request.GET:
             get_obj = Customer.objects.filter(id=request.GET.get('approve')).first()
             if get_obj:
-                get_obj.request_access = False
                 get_obj.is_approved = True
                 RequestAccess.objects.create(is_approved = True,requested_by_id= request.user.id, requested_to_id = get_obj.user_id, record_number=request.GET.get('approve') )
                 get_obj.save()
