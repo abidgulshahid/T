@@ -86,7 +86,8 @@ class Dashboard(View):
             if edit_form.is_valid():
                 obj = edit_form.save(commit=False)
                 obj.user_id = request.user.id
-                print('hello world')
+                if request.user.is_tailer:
+                    obj.tailer = request.user
                 obj.save()
                 return HttpResponse('success')
             print(edit_form.errors, 'error')
