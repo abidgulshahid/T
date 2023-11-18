@@ -18,7 +18,12 @@ class Dashboard(View):
         form = TailorForm()
         if 'get_list' in request.GET:
             search = request.GET.get('search')
-            get_tailers = Customer.objects.filter(user_id=request.user.id)
+            get_tailers = ""
+
+            if request.user.is_tailer:
+                get_tailers = Customer.objects.filter(tailer=request.user)
+            else:
+                get_tailers = Customer.objects.filter(user_id=request.user.id)
             if search: get_tailers =  get_tailers.filter(Q(name__icontains=search) | Q(phone_number__icontains=search))
             context = {'get_tailers': get_tailers}
             string = render(request, 'tailer/_partial/_list.html', context=context)
@@ -43,6 +48,15 @@ class Dashboard(View):
                 get_obj.save()
                 return HttpResponse('success')
 
+        if 'approve' in request.GET:
+            get_obj = Customer.objects.filter(id=request.GET.get('approve')).first()
+            if get_obj:
+                get_obj.request_access = False
+                get_obj.is_approved = True
+                RequestAccess.objects.create(is_approved = True,requested_by_id= request.user.id, requested_to_id = get_obj.user_id, record_number=request.GET.get('approve') )
+                get_obj.save()
+                return HttpResponse('success')
+
         return render(request, 'tailer/dashboard.html', context={'request': request, 'entry_form': form})
 
     def post(self, request):
@@ -54,6 +68,10 @@ class Dashboard(View):
                 data = form.cleaned_data
                 obj = form.save(commit=False)
                 obj.user = request.user
+                if request.user.is_user:
+                    obj.tailer = data['tailer']
+                else:
+                    obj.tailer = request.user
                 obj.save()
                 return HttpResponse('success')
             print(form.errors)
