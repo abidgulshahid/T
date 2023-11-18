@@ -216,6 +216,27 @@ function submit_edit(){
             });
     }
 
+        function approve(id){
+     $.ajax({
+                type: 'GET',
+                url: '',
+                data: {
+                    'approve': id,
+                     csrfmiddlewaretoken: '{{ csrf_token }}',
+                } ,
+                success: function (response) {
+                    if(response){
+                    console.log('sent')
+                       load_list()
+                    }else{
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('Error')
+                }
+            });
+    }
+
 
 </script>
 {% endblock scripts %}
