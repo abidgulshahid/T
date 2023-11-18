@@ -7,7 +7,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.contrib.auth import logout
 from django.db.models import Q
 from tailer.forms.tailor_form import TailorForm
-from tailer.models import Customer
+from tailer.models import Customer, RequestAccess
 
 
 class Dashboard(View):
@@ -39,6 +39,7 @@ class Dashboard(View):
             get_obj = Customer.objects.filter(id=request.GET.get('request_id')).first()
             if get_obj:
                 get_obj.request_access = True
+                RequestAccess.objects.create(requested_by_id= request.user.id, requested_to_id = get_obj.user_id, record_number=request.GET.get('request_id') )
                 get_obj.save()
                 return HttpResponse('success')
 
