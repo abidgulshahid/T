@@ -59,5 +59,7 @@ class Customer(models.Model):
 
 
 class RequestAccess(models.Model):
-    user = models.ForeignKey(Users, on_delete=models.CASCADE, null=True, blank=True)
+    requested_by = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='request_by_usr', null=True, blank=True)
     record_number = models.IntegerField(max_length=255)
+    requested_to  = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='request_to_user', null=True, blank=True)
+
