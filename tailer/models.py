@@ -51,6 +51,13 @@ class Customer(models.Model):
         ("NO", "NO")
     ]
     recieved = models.CharField(max_length=255, null=True, blank=True, choices=status)
+    request_access = models.BooleanField(default=False)
+
 
     def __str__(self):
         return str(self.name)
+
+
+class RequestAccess(models.Model):
+    user = models.ForeignKey(Users, on_delete=models.CASCADE, null=True, blank=True)
+    record_number = models.IntegerField(max_length=255)
