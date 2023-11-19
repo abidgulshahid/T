@@ -47,13 +47,28 @@ class Customer(models.Model):
     pancha = models.CharField(max_length=255, null=True, blank=True)
     extra_info = models.CharField(max_length=500, null=True, blank=True)
     payment = models.CharField(max_length=500, null=True, blank=True)
-    status = [
+    recieved_status = [
         ("YES", "YES"),
         ("NO", "NO")
     ]
-    recieved = models.CharField(max_length=255, null=True, blank=True, choices=status)
+    recieved = models.CharField(max_length=255, null=True, blank=True, choices=recieved_status)
+    cloth_type_status = [
+        ("Cotton", "Cotton"),
+        ("Fabric", "Fabric"),
+        ("Silk", "Silk"),
+        ("Linen", "Linen"),
+    ]
+    cloth_quantites = models.CharField(max_length=255, null=True, blank=True)
+    cloth_types = models.CharField(max_length=255, null=True, blank=True, choices=cloth_type_status)
     request_access = models.BooleanField(default=False)
     is_approved = models.BooleanField(default=False)
+    status = [
+        ("Waiting", "Waiting"),
+        ("Ready", "Ready")
+    ]
+    status = models.CharField(max_length=255, null=True, blank=True, choices=status, default='Waiting')
+    pant_length =  models.CharField(max_length=255, null=True, blank=True)
+    pant_width =  models.CharField(max_length=255, null=True, blank=True)
 
 
     def __str__(self):
@@ -61,9 +76,9 @@ class Customer(models.Model):
 
 
 class RequestAccess(models.Model):
-    requested_by = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='request_by_usr', null=True, blank=True)
+    requested_by = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='request_by_usr', null=True,
+                                     blank=True)
     record_number = models.IntegerField(max_length=255)
-    requested_to  = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='request_to_user', null=True, blank=True)
+    requested_to = models.ForeignKey(Users, on_delete=models.CASCADE, related_name='request_to_user', null=True,
+                                     blank=True)
     is_approved = models.BooleanField(default=False)
-
-

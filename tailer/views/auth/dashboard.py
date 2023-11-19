@@ -15,6 +15,7 @@ class Dashboard(View):
         return super(Dashboard, self).dispatch(request, *args, **kwargs)
 
     def get(self, request):
+        print(request.user.is_user)
         form = TailorForm()
         if 'get_list' in request.GET:
             search = request.GET.get('search')
@@ -23,6 +24,7 @@ class Dashboard(View):
             if request.user.is_tailer:
                 get_tailers = Customer.objects.filter(tailer=request.user)
             else:
+                print('here')
                 get_tailers = Customer.objects.filter(user_id=request.user.id)
             if search: get_tailers =  get_tailers.filter(Q(name__icontains=search) | Q(phone_number__icontains=search))
             context = {'get_tailers': get_tailers}
@@ -30,9 +32,16 @@ class Dashboard(View):
             return HttpResponse(string)
         if 'obj' in request.GET:
             get_obj = request.GET.get('obj')
-            obj = Customer.objects.filter(id=get_obj, user_id=request.user.id).first()
+            obj = ''
+            if request.user.is_tailer:
+                obj = Customer.objects.filter(id=get_obj, tailer_id=request.user.id).first()
+            else:
+                obj = Customer.objects.filter(id=get_obj, user_id=request.user.id).first()
+
+            user_id = Customer.objects.filter(id=get_obj).first()
+            print(user_id, 'user id ')
             edit_form = TailorForm(instance=obj)
-            context = {'entry_form': edit_form, 'obj': obj}
+            context = {'entry_form': edit_form, 'obj': obj, 'user_id':user_id}
             string = render(request, 'tailer/_partial/_edit.html', context=context)
             return HttpResponse(string)
         if 'delete_id' in request.GET:
@@ -79,14 +88,21 @@ class Dashboard(View):
             return render(request, 'tailer/_partial/_create.html', context={'request': request, 'entry_form': form})
 
         if 'edit_entry' in request.POST:
+            print(request.POST, 'request post')
             edit_entry = request.POST.get('edit_entry')
-            edit_form = TailorForm(instance=Customer.objects.filter(user_id=request.user.id, id=edit_entry).first(),
+            print(request.POST.get('user_id'), 'user id')
+            edit_form = TailorForm(instance=Customer.objects.filter(tailer_id=request.user.id, id=edit_entry).first(),
                                    data=request.POST)
             if edit_form.is_valid():
                 obj = edit_form.save(commit=False)
-                obj.user_id = request.user.id
-                if request.user.is_tailer:
-                    obj.tailer = request.user
+                from tailer.models import Users
+                print( request.POST.get('user_id'), 'user id')
+                user_obj = Customer.objects.get(id=request.POST.get('user_id'))
+                print(user_obj.user.id)
+                user_id = Users.objects.get(id=user_obj.user.id)
+                print(user_id)
+                obj.user = user_id
+                obj.tailer = request.user
                 obj.save()
                 return HttpResponse('success')
             print(edit_form.errors, 'error')
@@ -101,7 +117,7 @@ class DataView(View):
         return super(DataView, self).dispatch(request, *args, **kwargs)
 
     def get(self, request,id):
-        get_data = get_object_or_404(Customer, user=request.user, id=id)
+        get_data = get_object_or_404(Customer, id=id)
         print(get_data, 'get data')
         return render(request, 'tailer/view_detail.html', context={'request': request, 'get_data':get_data})
 

@@ -60,15 +60,36 @@ padding-bottom: 35px;
 
 
         </div>
-
         <div class="row">
-                <div class="col-md-4">
+             <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Address</label>
                     {{entry_form.address}}
 
                 </div>
             </div>
+
+             <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Clothes Quantites</label>
+                    {{entry_form.cloth_quantites}}
+
+                </div>
+            </div>
+
+               <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Clothes Types</label>
+                    {{entry_form.cloth_types}}
+
+                </div>
+            </div>
+        </div>
+
+       <h3>Shirt</h3>
+
+        <div class="row">
+
 
               <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
@@ -186,8 +207,13 @@ padding-bottom: 35px;
             </div>
 
 
-                   <div class="col-md-2">
-                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+
+        <input name="create_entry" hidden>
+        </div>
+        <h2>Pant</h2>
+        <div class="row">
+            <div class="col-md-4">
+            <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Pancha</label>
                     {{entry_form.pancha}}
 
@@ -196,8 +222,31 @@ padding-bottom: 35px;
                              {% endif %}
 
                 </div>
+                </div>
+
+            <div class="col-md-4">
+                      <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Pant Length</label>
+                    {{entry_form.pant_length}}
+
+                                         {% if entry_form.pant_length.errors %}
+                                   <span class="text-danger"> {{ entry_form.pant_length.errors }} </span>
+                             {% endif %}
+
+                </div>
             </div>
-        <input name="create_entry" hidden>
+
+            <div class="col-md-4">
+                      <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Pant Width</label>
+                    {{entry_form.pant_width}}
+
+                                         {% if entry_form.pant_width.errors %}
+                                   <span class="text-danger"> {{ entry_form.pant_width.errors }} </span>
+                             {% endif %}
+
+                </div>
+            </div>
         </div>
 
         <div class="row">
@@ -243,6 +292,10 @@ padding-bottom: 35px;
             {{entry_form.tailer}}
         </div>
         {% endif %}
+
+          <div class="row">
+            {{entry_form.status}}
+        </div>
 
 
     </div>

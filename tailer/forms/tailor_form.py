@@ -19,7 +19,8 @@ class TailorForm(forms.ModelForm):
 
         self.fields['order_deadline'].widget = forms.TextInput(attrs={'type': 'date'})
         self.fields['order_deadline'].widget.attrs['class'] = "form-control"
-
+        field = self.fields['user']
+        field.widget = field.hidden_widget()
         self.fields['name'].required = True
         self.fields['phone_number'].required = True
 
