@@ -7,7 +7,9 @@
                         <div class="card">
   <div class="card-body">
       <div class="row">
+
           <table class="table">
+
   <thead>
     <tr>
       <th scope="col">Name</th>
@@ -26,6 +28,7 @@
       <th scope="col">Payment</th>
       <th scope="col">Recieved</th>
       <th scope="col">Extra Info</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
@@ -46,6 +49,8 @@
       <td>{{get_data.payment}}</td>
       <td>{{get_data.recieved}}</td>
       <td>{{get_data.extra_info}}</td>
+      <td>{{get_data.status}}</td>
+      <td><button onclick="refresh()" class="btn btn-success">Refresh</button></td>
     </tr>
   </tbody>
 </table>
@@ -59,9 +64,20 @@
                     </div>
                 </div>
 
- 
+
+  <div class="row">
+    <div class="col-md-8">
+
+  </div>
+  </div>
 
 
 {% endblock %}
 {% block scripts %}
+
+<script>
+  function refresh(){
+  window.location.href = "{% url 'data_view' get_data.id  %}"
+  }
+</script>
 {% endblock scripts %}
