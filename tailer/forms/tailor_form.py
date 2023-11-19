@@ -127,4 +127,33 @@ class TailorForm(forms.ModelForm):
             raise forms.ValidationError("Only Numbers are allowed")
         return None
 
+    def clean_pant_length(self):
+        pant_length = self.cleaned_data['pant_length']
+        number_pattern = re.compile(r'\d+')
+        if pant_length:
+            if number_pattern.findall(pant_length):
+                return pant_length
+            raise forms.ValidationError("Only Numbers are allowed")
+        return None
+
+    def clean_pant_width(self):
+        pant_width = self.cleaned_data['pant_width']
+        number_pattern = re.compile(r'\d+')
+        if pant_width:
+            if number_pattern.findall(pant_width):
+                return pant_width
+            raise forms.ValidationError("Only Numbers are allowed")
+        return None
+
+    def clean_cloth_quantites(self):
+        pant_width = self.cleaned_data['cloth_quantites']
+        number_pattern = re.compile(r'\d+')
+        if pant_width:
+            if number_pattern.findall(pant_width):
+                return pant_width
+            raise forms.ValidationError("Only Numbers are allowed")
+        return None
+
+
+
 
