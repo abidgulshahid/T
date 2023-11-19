@@ -26,16 +26,24 @@ padding-bottom: 35px;
         <div class="row">
             <div class="col-md-4">
                  <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Name</label>
+                    <label class="wb-event-box-b-12 ">Name <span class="text-danger">*</span> </label>
                     {{entry_form.name}}
+
+                       {% if entry_form.name.errors %}
+                                   <span class="text-danger"> {{ entry_form.name.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
 
                 <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Phone Number</label>
+                    <label class="wb-event-box-b-12 ">Phone Number  <span class="text-danger">*</span</label>
                     {{entry_form.phone_number}}
+
+                      {% if entry_form.phone_number.errors %}
+                                   <span class="text-danger"> {{ entry_form.phone_number.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
@@ -52,9 +60,8 @@ padding-bottom: 35px;
 
 
         </div>
-
         <div class="row">
-                <div class="col-md-4">
+             <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Address</label>
                     {{entry_form.address}}
@@ -62,10 +69,36 @@ padding-bottom: 35px;
                 </div>
             </div>
 
+             <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Clothes Quantites</label>
+                    {{entry_form.cloth_quantites}}
+
+                </div>
+            </div>
+
+               <div class="col-md-4">
+                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Clothes Types</label>
+                    {{entry_form.cloth_types}}
+
+                </div>
+            </div>
+        </div>
+
+       <h3>Shirt</h3>
+
+        <div class="row">
+
+
               <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Length <span>cm</span></label>
+                    <label class="wb-event-box-b-12 ">Length <span class="text-danger">(cm)</span></label>
                     {{entry_form.length}}
+
+                       {% if entry_form.length.errors %}
+                                   <span class="text-danger"> {{ entry_form.length.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
@@ -73,8 +106,14 @@ padding-bottom: 35px;
 
                    <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Waist</label>
+                    <label class="wb-event-box-b-12 ">Waist  <span class="text-danger">(cm)</span></label>
                     {{entry_form.waist}}
+
+
+                       {% if entry_form.waist.errors %}
+                                   <span class="text-danger"> {{ entry_form.waist.errors }} </span>
+                             {% endif %}
+
 
                 </div>
             </div>
@@ -85,16 +124,26 @@ padding-bottom: 35px;
                <div class="row">
                 <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Low Waist</label>
+                    <label class="wb-event-box-b-12 ">Low Waist  <span class="text-danger">(cm)</span></label>
                     {{entry_form.low_waist}}
+
+
+                       {% if entry_form.low_waist.errors %}
+                                   <span class="text-danger"> {{ entry_form.low_waist.errors }} </span>
+                             {% endif %}
+
 
                 </div>
             </div>
 
               <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Hip</label>
+                    <label class="wb-event-box-b-12 ">Hip  <span class="text-danger">(cm)</span></label>
                     {{entry_form.hip}}
+
+                               {% if entry_form.hip.errors %}
+                                   <span class="text-danger"> {{ entry_form.hip.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
@@ -102,8 +151,13 @@ padding-bottom: 35px;
 
                    <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Muscle</label>
+                    <label class="wb-event-box-b-12 ">Muscle  <span class="text-danger">(cm)</span></label>
                     {{entry_form.muscle}}
+
+                        {% if entry_form.muscle.errors %}
+                                   <span class="text-danger"> {{ entry_form.muscle.errors }} </span>
+                             {% endif %}
+
 
                 </div>
             </div>
@@ -115,58 +169,106 @@ padding-bottom: 35px;
                     <div class="row">
                 <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">ARM Hole</label>
+                    <label class="wb-event-box-b-12 ">ARM Hole  <span class="text-danger">(cm)</span></label>
                     {{entry_form.arm_hole}}
+
+                               {% if entry_form.arm_hole.errors %}
+                                   <span class="text-danger"> {{ entry_form.arm_hole.errors }} </span>
+                             {% endif %}
 
                 </div>
             </div>
 
               <div class="col-md-4">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Collar</label>
+                    <label class="wb-event-box-b-12 ">Collar  <span class="text-danger">(cm)</span></label>
                     {{entry_form.collar}}
 
+
+                               {% if entry_form.collar.errors %}
+                                   <span class="text-danger"> {{ entry_form.collar.errors }} </span>
+                             {% endif %}
+
                 </div>
             </div>
 
 
                    <div class="col-md-2">
                 <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Pocket</label>
+                    <label class="wb-event-box-b-12 ">Pocket  <span class="text-danger">(cm)</span></label>
                     {{entry_form.pocket}}
 
+                        {% if entry_form.pocket.errors %}
+                                   <span class="text-danger"> {{ entry_form.pocket.errors }} </span>
+                             {% endif %}
+
+
                 </div>
             </div>
-
-
-                   <div class="col-md-2">
-                <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
-                    <label class="wb-event-box-b-12 ">Pancha</label>
+        <input type="hidden" value="{{user_id.id}}" name="user_id">
+        <input type="text" name="edit_entry" value="{{obj.id}}" hidden>
+        </div>
+        <h2>Pant</h2>
+        <div class="row">
+            <div class="col-md-4">
+            <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Pancha  <span class="text-danger">(cm)</span></label>
                     {{entry_form.pancha}}
 
+                                         {% if entry_form.pancha.errors %}
+                                   <span class="text-danger"> {{ entry_form.pancha.errors }} </span>
+                             {% endif %}
+
+                </div>
+                </div>
+
+            <div class="col-md-4">
+                      <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Pant Length  <span class="text-danger">(cm)</span></label>
+                    {{entry_form.pant_length}}
+
+                                         {% if entry_form.pant_length.errors %}
+                                   <span class="text-danger"> {{ entry_form.pant_length.errors }} </span>
+                             {% endif %}
+
                 </div>
             </div>
-            <input type="text" name="edit_entry" value="{{obj.id}}" hidden>
+
+            <div class="col-md-4">
+                      <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
+                    <label class="wb-event-box-b-12 ">Pant Width  <span class="text-danger">(cm)</span></label>
+                    {{entry_form.pant_width}}
+
+                                         {% if entry_form.pant_width.errors %}
+                                   <span class="text-danger"> {{ entry_form.pant_width.errors }} </span>
+                             {% endif %}
+
+                </div>
+            </div>
         </div>
 
-                <div class="row">
+        <div class="row">
             <div class="col-md-12">
 
                              <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Additional Information</label>
                     {{entry_form.extra_info}}
 
+
                 </div>
 
             </div>
         </div>
-
-                  <div class="row">
+           <div class="row">
             <div class="col-md-6">
 
                              <div class="form-group text-left label-floating is-empty {% if form.wedding_fairs_choices.errors %} has-error {% endif %}">
                     <label class="wb-event-box-b-12 ">Payment</label>
                     {{entry_form.payment}}
+
+                                        {% if entry_form.payment.errors %}
+                                   <span class="text-danger"> {{ entry_form.payment.errors }} </span>
+                             {% endif %}
 
                 </div>
 
@@ -182,11 +284,16 @@ padding-bottom: 35px;
 
             </div>
         </div>
-           <div class="row">
+
+        {% if request.user.is_user %}
+        <div class="row">
+            {{entry_form.tailer}}
+        </div>
+        {% endif %}
+
+          <div class="row">
             {{entry_form.status}}
         </div>
-        <input type="hidden" value="{{user_id.id}}" name="user_id">
-
 
 
     </div>
@@ -199,3 +306,4 @@ padding-bottom: 35px;
 </form>
 
 <div class="clearfix"></div>
+

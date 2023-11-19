@@ -48,7 +48,7 @@ class Dashboard(View):
             delete_id = request.GET.get('delete_id')
             print(delete_id)
             query = (Q(id=delete_id, user_id=request.user.id) | Q(id=delete_id, tailer_id=request.user.id))
-            obj = Customer.objects.filter(query).first()
+            obj = Customer.objects.filter(id=delete_id).first()
             obj.delete()
             return HttpResponse('success')
         if 'request_id' in request.GET:
