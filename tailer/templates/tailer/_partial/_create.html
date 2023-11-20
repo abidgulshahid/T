@@ -286,6 +286,17 @@ padding-bottom: 35px;
 
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label class="wb-event-box-b-12 ">Cloth Color</label>
+                {{entry_form.cloth_color}}
+            </div>
+
+                 <div class="col-md-6">
+                <label class="wb-event-box-b-12 ">Cloth Price <span class="text-danger">(cm)</span></label>
+                {{entry_form.cloth_price}}
+            </div>
+        </div>
 
         {% if request.user.is_user %}
         <div class="row">
@@ -293,8 +304,11 @@ padding-bottom: 35px;
         </div>
         {% endif %}
 
-          <div class="row">
+          <div class="row"><br>
+              <div class="col-md-12">
+                  <br>
             {{entry_form.status}}
+                  </div>
         </div>
 
 

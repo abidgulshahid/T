@@ -22,20 +22,22 @@ class TailorForm(forms.ModelForm):
         field = self.fields['user']
         field.widget = field.hidden_widget()
         self.fields['name'].required = True
-        self.fields['phone_number'].required = True
+        self.fields['phone_number'].required = False
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data['phone_number']
         number_pattern = re.compile(r'\d+')
-        if number_pattern.findall(phone_number):
-            return  phone_number
-        raise forms.ValidationError("Only Numbers are allowed")
+        if phone_number:
+            if number_pattern.findall(phone_number):
+                return phone_number
+            raise forms.ValidationError("Only Numbers are allowed")
+        return ""
 
     def clean_length(self):
         id_length = self.cleaned_data['length']
         number_pattern = re.compile(r'\d+')
         if id_length:
-            if  number_pattern.findall(id_length):
+            if number_pattern.findall(id_length):
                 return id_length
             raise forms.ValidationError("Only Numbers are allowed")
         return None
@@ -49,7 +51,6 @@ class TailorForm(forms.ModelForm):
             raise forms.ValidationError("Only Numbers are allowed")
         return None
 
-
     def clean_low_waist(self):
         low_waist = self.cleaned_data['low_waist']
         number_pattern = re.compile(r'\d+')
@@ -58,7 +59,6 @@ class TailorForm(forms.ModelForm):
                 return low_waist
             raise forms.ValidationError("Only Numbers are allowed")
         return None
-
 
     def clean_hip(self):
         hip = self.cleaned_data['hip']
@@ -69,7 +69,6 @@ class TailorForm(forms.ModelForm):
             raise forms.ValidationError("Only Numbers are allowed")
         return None
 
-
     def clean_muscle(self):
         muscle = self.cleaned_data['muscle']
         number_pattern = re.compile(r'\d+')
@@ -78,7 +77,6 @@ class TailorForm(forms.ModelForm):
                 return muscle
             raise forms.ValidationError("Only Numbers are allowed")
         return None
-
 
     def clean_arm_hole(self):
         arm_hole = self.cleaned_data['arm_hole']
@@ -107,7 +105,6 @@ class TailorForm(forms.ModelForm):
             raise forms.ValidationError("Only Numbers are allowed")
         return None
 
-
     def clean_pancha(self):
         pancha = self.cleaned_data['pancha']
         number_pattern = re.compile(r'\d+')
@@ -116,7 +113,6 @@ class TailorForm(forms.ModelForm):
                 return pancha
             raise forms.ValidationError("Only Numbers are allowed")
         return None
-
 
     def clean_payment(self):
         payment = self.cleaned_data['payment']
@@ -154,6 +150,11 @@ class TailorForm(forms.ModelForm):
             raise forms.ValidationError("Only Numbers are allowed")
         return None
 
-
-
-
+    def clean_cloth_price(self):
+        id_length = self.cleaned_data['cloth_price']
+        number_pattern = re.compile(r'\d+')
+        if id_length:
+            if number_pattern.findall(id_length):
+                return id_length
+            raise forms.ValidationError("Only Numbers are allowed")
+        return None

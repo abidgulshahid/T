@@ -47,6 +47,26 @@ class Customer(models.Model):
     pancha = models.CharField(max_length=255, null=True, blank=True)
     extra_info = models.CharField(max_length=500, null=True, blank=True)
     payment = models.CharField(max_length=500, null=True, blank=True)
+
+    COLOR_CHOICES = [
+        ('red', 'Red'),
+        ('green', 'Green'),
+        ('blue', 'Blue'),
+        ('yellow', 'Yellow'),
+        ('magenta', 'Magenta'),
+        ('cyan', 'Cyan'),
+        ('orange', 'Orange'),
+        ('purple', 'Purple'),
+        ('darkgreen', 'Dark Green'),
+        ('navy', 'Navy'),
+        ('pink', 'Pink'),
+        ('saddlebrown', 'Saddle Brown'),
+        ('brown', 'Brown'),
+        ('gray', 'Gray'),
+        ('black', 'Black'),
+    ]
+    cloth_color = models.CharField(max_length=500, null=True, blank=True, choices=COLOR_CHOICES)
+    cloth_price = models.CharField(max_length=500, null=True, blank=True)
     recieved_status = [
         ("YES", "YES"),
         ("NO", "NO")
