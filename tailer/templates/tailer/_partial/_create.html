@@ -74,6 +74,10 @@ padding-bottom: 35px;
                     <label class="wb-event-box-b-12 ">Clothes Quantites</label>
                     {{entry_form.cloth_quantites}}
 
+                      {% if entry_form.cloth_quantites.errors %}
+                                   <span class="text-danger"> {{ entry_form.cloth_quantites.errors }} </span>
+                             {% endif %}
+
                 </div>
             </div>
 
