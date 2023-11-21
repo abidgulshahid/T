@@ -21,8 +21,17 @@ class TailorForm(forms.ModelForm):
         self.fields['order_deadline'].widget.attrs['class'] = "form-control"
         field = self.fields['user']
         field.widget = field.hidden_widget()
-        self.fields['name'].required = True
+        self.fields['name'].required = False
         self.fields['phone_number'].required = False
+
+
+    def clean_name(self):
+        first_name = self.cleaned_data['name']
+        regex = r"[A-Za-z\s]+"
+        if first_name:
+            if not re.search(regex, first_name):
+                raise forms.ValidationError("Only Characters are allowed")
+        return first_name
 
     def clean_phone_number(self):
         phone_number = self.cleaned_data['phone_number']

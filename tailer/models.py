@@ -48,6 +48,16 @@ class Customer(models.Model):
     extra_info = models.CharField(max_length=500, null=True, blank=True)
     payment = models.CharField(max_length=500, null=True, blank=True)
 
+    PRICE = [
+        ('1000', '1000'),
+        ('2000', '2000'),
+        ('3000', '3000'),
+        ('4000', '4000'),
+        ('5000', '5000'),
+        ('6000', '6000'),
+        ('7000', '7000'),
+    ]
+
     COLOR_CHOICES = [
         ('red', 'Red'),
         ('green', 'Green'),
@@ -66,7 +76,7 @@ class Customer(models.Model):
         ('black', 'Black'),
     ]
     cloth_color = models.CharField(max_length=500, null=True, blank=True, choices=COLOR_CHOICES)
-    cloth_price = models.CharField(max_length=500, null=True, blank=True)
+    cloth_price = models.CharField(max_length=500, null=True, blank=True, choices=PRICE)
     recieved_status = [
         ("YES", "YES"),
         ("NO", "NO")
